@@ -1,0 +1,244 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+\documentclass[aspectratio=169,xcolor=dvipsnames, t]{beamer}
+\usepackage{fontspec} % Allows using custom font. MUST be before loading the theme!
+\usetheme{SimplePlusAIC}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and  \bottomrule in tables
+\usepackage{svg} %allows using svg figures
+\usepackage{tikz}
+\usepackage{makecell}
+% ADD YOUR PACKAGES BELOW
+\usepackage{wrapfig}
+\usepackage[export]{adjustbox}
+
+\newcommand{\backupbegin}{
+   \newcounter{finalframe}
+   \setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \setcounter{framenumber}{\value{finalframe}}
+}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\title[short title]{$\bar{n}$ vs recoil variables} % The short title appears at the bottom of every slide, the full title is only on the title page
+\subtitle{(July 29 2025 update)}
+
+\author{Emanuele Zanusso}
+\institute[Dipartimento di Fisica di Torino]{Dipartimento di Fisica
+\newline
+Università degli studi di Torino
+}
+% Your institution as it will appear on the bottom of every slide, maybe shorthand to save space
+
+
+\date{July 29 2025} % Date, can be changed to a custom date
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitlepage
+
+\begin{frame}[t]{Summary}
+    % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+    \tableofcontents
+\end{frame}
+
+%------------------------------------------------
+% Section divider frame
+\makesection{The channel studied}
+
+%------------------------------------------------
+% Theoretical aspects
+\begin{frame}{The .dec file}
+    \begin{itemize}
+        \item The decay channel is:
+        \begin{center}
+        $\Upsilon(4S)  \rightarrow p \pi^- \bar{n} \gamma$ 
+	\end{center}
+	
+       \item PHSP model used
+       \item 500 events generated
+       \item Recoil from three body system $p \pi^- \gamma$
+        
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The steering file}
+    \begin{itemize}
+        \item p $\pi^- \gamma$ are reconstructed: fillParticleList used
+        \item Cuts applied:
+        
+        \begin{enumerate}
+         \item Reconstructed particle from $\Upsilon(4S)$, ($particle\_genMotherPDG == 300553$)
+        	\item mRecoil > 0 GeV and mRecoil < 2 GeV
+        \end{enumerate} 
+         
+   	\item For $\bar{n}$ list two cases:
+	\begin{enumerate}
+	\item $\bar{n}$ from MC (fillParticleListFromMC)
+	\item $\bar{n}$ reconstructed (fillParticleList) 
+	\end{enumerate}
+	
+	\item We'd like to discuss about variables as mRecoil, $\theta , \phi $, and p
+	
+        
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\makesection{recoil vs MC $\bar{n}$}
+
+\begin{frame}{$\theta$ and $\phi$ with MC $\bar{n}$}
+\begin{itemize}
+\item Good correlation between them:
+\begin{figure}[p]
+        \includegraphics[scale=0.24, angle=0]{images/theta_corr_MC.pdf}
+        \includegraphics[scale=0.24, angle=0]{images/phi_corr_MC.pdf}
+\end{figure}
+
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}{$\theta$ and $\phi$ with MC $\bar{n}$}
+\begin{itemize}
+\item Angular dispersion:
+\begin{figure}[p]
+        \includegraphics[scale=0.24, angle=0]{images/delta_ang_MC.pdf}
+\end{figure}
+
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Momentum p with MC $\bar{n}$}
+\begin{itemize}
+\item p distribution:
+\begin{figure}[p]
+        \includegraphics[scale=0.24, angle=0]{images/pRecoil_MC.pdf}
+        \includegraphics[scale=0.24, angle=0]{images/n0_p_MC.pdf}
+\end{figure}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}{Momentum p with MC $\bar{n}$}
+\begin{itemize}
+\item Correlation in momentum p:
+\begin{figure}[p]
+        \includegraphics[scale=0.24, angle=0]{images/p_corr_MC.pdf}
+\end{figure}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------
+
+\makesection{recoil vs reconstructed $\bar{n}$}
+
+\begin{frame}{mRecoil}
+ \begin{itemize}
+\item mRecoil distribution close to $\bar{n}$ mass:
+
+\begin{figure}[p]
+        \includegraphics[scale=0.24, angle=0]{images/mRecoil.pdf}
+\end{figure}
+
+         \end{itemize}
+
+\end{frame}
+
+\begin{frame}{$\theta$ and $\phi$ with rec $\bar{n}$}
+\begin{itemize}
+\item Still not too bad correlation between them:
+\begin{figure}[p]
+        \includegraphics[scale=0.24, angle=0]{images/theta_corr_rec.pdf}
+        \includegraphics[scale=0.24, angle=0]{images/phi_corr_rec.pdf}
+\end{figure}
+
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}{$\theta$ and $\phi$ with rec $\bar{n}$}
+\begin{itemize}
+\item Angular dispersion:
+\begin{figure}[p]
+        \includegraphics[scale=0.24, angle=0]{images/delta_ang_rec.pdf}
+\end{figure}
+
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Momentum p with reconstructed $\bar{n}$}
+\begin{itemize}
+\item p distribution:
+\begin{figure}[p]
+        \includegraphics[scale=0.24, angle=0]{images/pRecoil_MC.pdf}
+        \includegraphics[scale=0.24, angle=0]{images/n0_p_rec.pdf}
+\end{figure}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Momentum p with reconstructed $\bar{n}$}
+\begin{itemize}
+\item Reconstructed p distribution with $p_{\bar{n}} < 6 GeV$:
+\begin{figure}[p]
+        \includegraphics[scale=0.20, angle=0]{images/n0_p_rec_cuts.pdf}
+\end{figure}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}{Momentum p with MC $\bar{n}$}
+\begin{itemize}
+\item No correlation in momentum p:
+\begin{figure}[p]
+        \includegraphics[scale=0.24, angle=0]{images/p_corr_rec.pdf}
+\end{figure}
+
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\makesection{What comes}
+
+\begin{frame}{What comes}
+ \begin{itemize}
+ 
+\item Improve selection of $\bar{n}$ candidates, taking the closest one to pRecoil 
+\item Introduce $\gamma_{ISR}$
+\item Introduce new channels as:
+\begin{enumerate}
+\item  $\Upsilon(4S)  \rightarrow J/\Psi  \gamma_{ISR}$ (with $J/\Psi \rightarrow   p \pi^- \bar{n}$)
+\item $\Upsilon(4S) \rightarrow \Lambda \bar{\Lambda} \gamma_{ISR}$ (with $\Lambda \rightarrow p \pi^-$ and $\bar{\Lambda} \rightarrow \bar{n} \pi^0$)
+\end{enumerate}
+    \end{itemize}
+\end{frame}
+
+
+\finalpagetext{Thank you for your attention}
+%----------------------------------------------------------------------------------------
+\makefinalpage
+%----------------------------------------------------------------------------------------
+\backupbegin
+
+\backupend
+\end{document}

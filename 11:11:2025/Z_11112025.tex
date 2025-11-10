@@ -1,0 +1,220 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+\documentclass[aspectratio=169,xcolor=dvipsnames, t]{beamer}
+\usepackage{fontspec} % Allows using custom font. MUST be before loading the theme!
+\usetheme{SimplePlusAIC}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and  \bottomrule in tables
+\usepackage{svg} %allows using svg figures
+\usepackage{tikz}
+\usepackage{makecell}
+% ADD YOUR PACKAGES BELOW
+\usepackage{wrapfig}
+\usepackage[export]{adjustbox}
+
+\newcommand{\backupbegin}{
+   \newcounter{finalframe}
+   \setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \setcounter{framenumber}{\value{finalframe}}
+}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\title[short title]{$\bar{n}$ and recoil in J/psi channel} % The short title appears at the bottom of every slide, the full title is only on the title page
+\subtitle{(November 11 2025 update)}
+
+\author{Emanuele Zanusso}
+\institute[Dipartimento di Fisica di Torino]{Dipartimento di Fisica
+\newline
+Università degli studi di Torino
+}
+% Your institution as it will appear on the bottom of every slide, maybe shorthand to save space
+
+
+\date{November 11 2025} % Date, can be changed to a custom date
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitlepage
+
+\begin{frame}[t]{Summary}
+    % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+    \tableofcontents
+\end{frame}
+
+%------------------------------------------------
+% Section divider frame
+\makesection{The channels}
+
+%------------------------------------------------
+% Theoretical aspects
+\begin{frame}{The .dec file}
+
+    \begin{itemize}
+    
+        \item The first decay channel is:
+        \begin{center}
+       $ e^+ e^- (\gamma_{ISR}) \rightarrow p \pi^- \bar{n} $ \ \ \ (phokhara + evt\_gen)
+       \end{center}
+       
+          \item The second decay channel (the new one) is:
+        \begin{center}
+       $ e^+ e^- (\gamma_{ISR}) \rightarrow J/\psi \rightarrow p \pi^- \bar{n} $ \ \ \ (evt\_gen VECTORISR)
+       \end{center}
+	\begin{figure}[p]
+        \includegraphics[scale=0.24, angle=0]{images/Jpsi_decfile.png}
+	\end{figure}
+       \item 50k events were generated in both cases 
+      
+        
+    \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{The steering file}
+    \begin{itemize}
+        \item Recoil from three body system p $\pi^-$ and $\gamma$ 
+        \item Applied cuts:
+        \begin{enumerate}
+        \item mRecoil > 0 GeV \&\& $\alpha$ < 0.35 rad ($\sim 20$ deg) \&\& nbar\_isFromECL == 1, where $\alpha$ is the angle between the recoil vector and the closest $\bar{n}$ candidate (rankByLowest)
+        \end{enumerate}
+        
+        \item Applied MC selections:
+        \begin{enumerate}
+         \item Reconstructed particle must originate from vpho (1) or from $J/\psi$ (2)
+         \item mcPDG selection for p (2212), $\gamma$ (22), $\pi^-$ (-211)
+        \end{enumerate} 
+	     
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{The steering file}
+    \begin{itemize}
+          
+	\item 1C kinematic fit with for the recoil mass: 
+\begin{figure}[p]
+        \includegraphics[scale=0.34, angle=0]{images/kin_fit.png}
+\end{figure}
+
+	\item Where vpho:list\_rec is a dummy particle which acts as the recoil
+	     
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\makesection{Channel (2): MC distributions}
+
+%------------------------------------------------
+
+\begin{frame}{What happens in $J/\psi$ channel}
+\begin{itemize}
+\item Three ISR $\gamma$ each event:
+\begin{figure}[p]
+        \includegraphics[scale=0.34, angle=0]{images/topoana_Jpsi.png}
+\end{figure}
+
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{$J/\psi$ channel (VECTORISR model)}
+\begin{itemize}
+\item $\gamma_{ISR}$ momentum:
+\begin{figure}[p]
+        \includegraphics[scale=0.44, angle=0]{images/VECISR_p_MC.pdf}
+\end{figure}
+
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{$J/\psi$ channel(VECTORISR model)}
+\begin{itemize}
+\item $\gamma_{ISR}$ $\theta$:
+\begin{figure}[p]
+        \includegraphics[scale=0.44, angle=0]{images/VECISR_theta_MC.pdf}
+\end{figure}
+
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\makesection{Channels (1) \& (2): reconstructed distributions (kinematic fit)}
+
+\begin{frame}{Reconstructed mRecoil in channel (1)}
+\begin{itemize}
+
+\item  Recoil of p $\pi^-$ and $\gamma$ before and after the kinematic fit:
+\begin{figure}[p]
+ 	\includegraphics[scale=0.34, angle=0]{images/mRecoil_std.pdf}
+	\includegraphics[scale=0.34, angle=0]{images/mRecoil_std_kin.pdf}
+\end{figure}
+
+\end{itemize}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}{Reconstructed mRecoil in channel (2)}
+\begin{itemize}
+
+\item  p $\pi^-$ and $\gamma$ recoil before and after the kinematic fit:
+\begin{figure}[p]
+ 	\includegraphics[scale=0.34, angle=0]{images/mRecoil_Jpsi.pdf}
+	\includegraphics[scale=0.34, angle=0]{images/mRecoil_Jpsi_kin.pdf}
+\end{figure}
+
+\end{itemize}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}{Reconstructed mRecoil in channel (2)}
+\begin{itemize}
+
+\item $\gamma_{ISR}$ recoil is above $J/\psi$ mass in channel (2):
+\begin{figure}[p]
+ 	\includegraphics[scale=0.34, angle=0]{images/mRecoil_gamma_Jpsi.pdf}
+	\includegraphics[scale=0.34, angle=0]{images/mRecoil_gamma_Jpsi_kin.pdf}
+\end{figure}
+
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\makesection{Next steps}
+
+\begin{frame}{What comes}
+ \begin{itemize}
+ \item Compare reconstructed $\bar{n}$ from anti-n0:list and gamma:list, studying cluster variables as $clusterLAT, clusterNHits, clusterE$ etc... (work in progress)
+ 
+\item Introduce new channel: $\Lambda (\rightarrow \ p \pi^- ) \bar{\Lambda} (\rightarrow \bar{n} \pi^0)$ (work in progress)
+
+\item Try to use real data (soon)
+
+    \end{itemize}
+\end{frame}
+
+
+
+
+
+\finalpagetext{Thank you for your attention}
+%----------------------------------------------------------------------------------------
+\makefinalpage
+%----------------------------------------------------------------------------------------
+\backupbegin
+
+\backupend
+\end{document}

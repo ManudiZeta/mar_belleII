@@ -1,0 +1,181 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+\documentclass[aspectratio=169,xcolor=dvipsnames, t]{beamer}
+\usepackage{fontspec} % Allows using custom font. MUST be before loading the theme!
+\usetheme{SimplePlusAIC}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and  \bottomrule in tables
+\usepackage{svg} %allows using svg figures
+\usepackage{tikz}
+\usepackage{makecell}
+% ADD YOUR PACKAGES BELOW
+\usepackage{wrapfig}
+\usepackage[export]{adjustbox}
+
+\newcommand{\backupbegin}{
+   \newcounter{finalframe}
+   \setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \setcounter{framenumber}{\value{finalframe}}
+}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\title[short title]{$\bar{n}$ vs recoil variables} % The short title appears at the bottom of every slide, the full title is only on the title page
+\subtitle{(September 09 2025 update)}
+
+\author{Emanuele Zanusso}
+\institute[Dipartimento di Fisica di Torino]{Dipartimento di Fisica
+\newline
+Università degli studi di Torino
+}
+% Your institution as it will appear on the bottom of every slide, maybe shorthand to save space
+
+
+\date{September 09 2025} % Date, can be changed to a custom date
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitlepage
+
+\begin{frame}[t]{Summary}
+    % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+    \tableofcontents
+\end{frame}
+
+%------------------------------------------------
+% Section divider frame
+\makesection{The channel studied}
+
+%------------------------------------------------
+% Theoretical aspects
+\begin{frame}{The .dec file}
+    \begin{itemize}
+        \item The decay channel is:
+        \begin{center}
+        $\Upsilon(4S)  \rightarrow p \pi^- \bar{n} \gamma$ 
+	\end{center}
+	
+	\item It is studied as: 
+	  \begin{center}
+        $\Upsilon(4S)  \rightarrow v_{pho} \ \bar{n}$  \ \ \ ($v_{pho}  \rightarrow p \pi^- \gamma$) 
+	\end{center}
+	
+       \item PHSP model used
+       \item 20000 events generated
+       \item Recoil from three body system $p \pi^- \gamma$
+        
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The steering file}
+    \begin{itemize}
+        \item p $\pi^- \gamma$ are reconstructed: fillParticleList used
+        \item Cuts applied:
+        
+        \begin{enumerate}
+         \item Reconstructed particle from $\Upsilon(4S)$, ($particle\_genMotherPDG == 300553$)
+        	\item mRecoil > 0 GeV and mRecoil < 2 GeV
+	\item $p\_mcPDG == 2212$ and $pi\_mcPDG == -211$ and $gamma\_mcPDG == 22$
+        \end{enumerate} 
+         	
+	\item Additional cut using \textbf{rankByLowest} over the 3D angle $\alpha$ (the angle between the $\bar{n}$ candidates and the recoil vector)
+	
+        
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\makesection{rankByLowest}
+
+\begin{frame}{The $\alpha$ angle}
+\begin{itemize}
+\item It is the 3D angle among the $\bar{n}$ candidates and the recoil vector
+\item The obtained formula is: 
+
+\begin{center}
+$\alpha = arcos[sin(\theta_1)sin(\theta_2)cos(\phi_1 - \phi_2) + cos(\theta_1)cos(\theta_2) ]$
+\end{center}
+
+(The variable \textbf{angleBetweenDaughterAndRecoil} does the same)
+
+\item The alpha distribution is: 
+\begin{figure}[p]
+        \includegraphics[scale=0.30, angle=0]{images/alpha_uncorr.pdf}
+\end{figure}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}{The $\alpha$ angle}
+\begin{itemize}
+\item Only one $\bar{n}$ candidate for each recoil vector is selected, namely the one closest to it
+\item In order to achieve it, rankByLowest is adopted, where only the best ranked $\bar{n}$ candidates are saved
+\item The related alpha distribution is: 
+\begin{figure}[p]
+        \includegraphics[scale=0.30, angle=0]{images/alpha.pdf}
+\end{figure}
+
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Some new relevant distributions}
+\begin{itemize}
+\item The updated recoil distributions:
+\begin{figure}[p]
+        \includegraphics[scale=0.24, angle=0]{images/vpho_mRecoil.pdf}
+         \includegraphics[scale=0.24, angle=0]{images/pRecoil.pdf}
+\end{figure}
+
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}{Some new relevant distributions}
+\begin{itemize}
+\item The updated geometric correlations:
+\begin{figure}[p]
+        \includegraphics[scale=0.24, angle=0]{images/theta_corr_REC.pdf}
+         \includegraphics[scale=0.24, angle=0]{images/phi_corr_REC.pdf}
+\end{figure}
+
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------
+
+\makesection{What comes}
+
+\begin{frame}{What comes}
+ \begin{itemize}
+ 
+\item Introduce $\gamma_{ISR}$ and compared it to $\gamma_{PHSP}$, studying the momentum distributions (\textbf{very soon})
+\item Introduce new channels as:
+\begin{enumerate}
+\item  $\Upsilon(4S)  \rightarrow J/\Psi  \gamma_{ISR}$ (with $J/\Psi \rightarrow   p \pi^- \bar{n}$) (\textbf{started})
+\item $\Upsilon(4S) \rightarrow \Lambda \bar{\Lambda} \gamma_{ISR}$ (with $\Lambda \rightarrow p \pi^-$ and $\bar{\Lambda} \rightarrow \bar{n} \pi^0$) (\textbf{soon})
+\end{enumerate}
+    \end{itemize}
+\end{frame}
+
+
+\finalpagetext{Thank you for your attention}
+%----------------------------------------------------------------------------------------
+\makefinalpage
+%----------------------------------------------------------------------------------------
+\backupbegin
+
+\backupend
+\end{document}

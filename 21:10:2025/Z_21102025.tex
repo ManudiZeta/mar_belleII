@@ -1,0 +1,243 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+\documentclass[aspectratio=169,xcolor=dvipsnames, t]{beamer}
+\usepackage{fontspec} % Allows using custom font. MUST be before loading the theme!
+\usetheme{SimplePlusAIC}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and  \bottomrule in tables
+\usepackage{svg} %allows using svg figures
+\usepackage{tikz}
+\usepackage{makecell}
+% ADD YOUR PACKAGES BELOW
+\usepackage{wrapfig}
+\usepackage[export]{adjustbox}
+
+\newcommand{\backupbegin}{
+   \newcounter{finalframe}
+   \setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \setcounter{framenumber}{\value{finalframe}}
+}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\title[short title]{$\bar{n}$ and recoil in PHSP $\gamma$ vs ISR $\gamma$} % The short title appears at the bottom of every slide, the full title is only on the title page
+\subtitle{(October 21 2025 update)}
+
+\author{Emanuele Zanusso}
+\institute[Dipartimento di Fisica di Torino]{Dipartimento di Fisica
+\newline
+Università degli studi di Torino
+}
+% Your institution as it will appear on the bottom of every slide, maybe shorthand to save space
+
+
+\date{October 21 2025} % Date, can be changed to a custom date
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitlepage
+
+\begin{frame}[t]{Summary}
+    % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+    \tableofcontents
+\end{frame}
+
+%------------------------------------------------
+% Section divider frame
+\makesection{The channels studied in PHSP vs ISR}
+
+%------------------------------------------------
+% Theoretical aspects
+\begin{frame}{The .dec file}
+
+    \begin{itemize}
+    
+        \item The PHSP decay channel is:
+        \begin{center}
+        $\Upsilon(4S)  \rightarrow p \pi^- \bar{n} \gamma$ \ \ \  (evt\_gen)
+	\end{center}
+	
+	\item The ISR decay channel is:
+        \begin{center}
+       $ e^+ e^- (\gamma_{ISR}) \rightarrow vpho \rightarrow p \pi^- \bar{n} $ \ \ \ (phokhara + evt\_gen)
+       \end{center}
+	
+       \item 50k events are generated in both cases 
+       \item \textbf{ISR\_events = True} in \textbf{add\_phokhara\_evtgen\_combination()} $\rightarrow$ each event contains at least one  ISR $\gamma$ 
+      
+        
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The steering file}
+    \begin{itemize}
+        \item Recoil from three body system p $\pi^-$ and $\gamma$ 
+        \item Cuts applied:
+        \begin{enumerate}
+        \item mRecoil > 0 GeV
+        \item The best $\bar{n}$ candidate is selected using rankByLowest on  $\alpha$, the 3D angle between the recoil vector and the $\bar{n}$ candidate
+        \item $\alpha$ < 0.35 rad ($\sim 20$ deg)
+        \end{enumerate}
+        
+        \item MC selections applied:
+        \begin{enumerate}
+         \item Reconstructed particle must originate from $\Upsilon(4S)$ (PHSP) or from vpho (ISR)
+         \item mcPDG selection for p (2212), $\gamma$ (22), $\pi^-$ (-211)
+        \end{enumerate} 
+         
+	\item We'd like to discuss about variables as mRecoil, $\theta$ and p
+	
+        
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{What happens in PHSP case}
+\begin{itemize}
+\item PHSP case with reconstructed p, $\pi^-$, $\gamma$ and $\bar{n}$:
+\begin{figure}[p]
+        \includegraphics[scale=0.34, angle=0]{images/topoana_PHSP.png}
+\end{figure}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What happens in ISR case}
+\begin{itemize}
+\item ISR case with reconstructed p, $\pi^-$, $\gamma$ and $\bar{n}$:
+\begin{figure}[p]
+
+        \includegraphics[scale=0.34, angle=0]{images/topoana_ISR.png}
+\end{figure}
+
+\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+
+\makesection{Some $\bar{n}$ and $\gamma$ distributions from MC}
+
+%------------------------------------------------
+
+\begin{frame}{MC ISR $\gamma$ list from generator}
+\begin{itemize}
+\item $\gamma$ p vs $\theta$ distribution from MC:
+\begin{figure}[p]
+        \includegraphics[scale=0.44, angle=0]{images/theta_vs_p_ISR_gamma_MC.pdf}
+\end{figure}
+
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{$\theta$ distribution for $\gamma$}
+\begin{itemize}
+\item $\theta_{PHSP}$ vs $\theta_{ISR}$ from MC:
+\begin{figure}[p]
+        \includegraphics[scale=0.44, angle=0]{images/gamma_boost.pdf}
+\end{figure}
+
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}{$\theta$ distribution for $\bar{n}$}
+\begin{itemize}
+\item $\theta_{PHSP}$ vs $\theta_{ISR}$ from MC:
+\begin{figure}[p]
+        \includegraphics[scale=0.44, angle=0]{images/nbar_boost.pdf}
+\end{figure}
+
+
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\makesection{Some $\bar{n}$ and $\gamma$ distributions from REC}
+
+\begin{frame}{Reconstructed mRecoil}
+ \begin{itemize}
+\item mRecoil distribution close to $\bar{n}$ mass in both cases:
+
+\begin{figure}[p]
+        \includegraphics[scale=0.24, angle=0]{images/mRecoil_PHSP_35.pdf}
+         \includegraphics[scale=0.24, angle=0]{images/mRecoil_ISR_35.pdf}
+\end{figure}
+\item PHSP $\rightarrow$ a distinct peak around $\bar{n}$ mass
+\item ISR $\rightarrow$ braoder peak around $\bar{n}$ mass 
+
+         \end{itemize}
+
+\end{frame}
+
+\begin{frame}{$\theta$ in recoil vs rec $\bar{n}$}
+\begin{itemize}
+\item Good correlation between them:
+\begin{figure}[p]
+        \includegraphics[scale=0.30, angle=0]{images/theta_corr_rec_PHSP_35.pdf}
+        \includegraphics[scale=0.30, angle=0]{images/theta_corr_rec_ISR_35.pdf}
+\end{figure}
+
+
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Momentum p with reconstructed $\bar{n}$}
+\begin{itemize}
+\item As previously discussed, there is no correlation in momentum between the recoil and  the reconstructed $\bar{n}$:
+\begin{figure}[p]
+        \includegraphics[scale=0.24, angle=0]{images/p_corr_PHSP_rec.pdf}
+        \includegraphics[scale=0.24, angle=0]{images/p_corr_ISR_rec.pdf}
+\end{figure}
+
+\item We could see clusterE variable (next slide)
+
+\end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{nbar\_clusterE variable}
+\begin{itemize}
+\item There is no linear correlation, but there appears a slightly better dependency between the two variables:
+\begin{figure}[p]
+        \includegraphics[scale=0.30, angle=0]{images/clusterE_corr_PHSP.pdf}
+        \includegraphics[scale=0.30, angle=0]{images/clusterE_corr_ISR.pdf}
+\end{figure}
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\makesection{What comes}
+
+\begin{frame}{What comes}
+ \begin{itemize}
+ 
+\item Introduce new channels as:
+\begin{enumerate}
+\item Channel $J/psi \rightarrow p \bar{n} \pi^- $ (work in progress)
+\item Channel $\Lambda (\rightarrow \ p \pi^- ) \bar{\Lambda} (\rightarrow \bar{n} \pi^0)$ (work in progress)
+\end{enumerate}
+    \end{itemize}
+\end{frame}
+
+
+\finalpagetext{Thank you for your attention}
+%----------------------------------------------------------------------------------------
+\makefinalpage
+%----------------------------------------------------------------------------------------
+\backupbegin
+
+\backupend
+\end{document}

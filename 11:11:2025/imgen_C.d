@@ -1,0 +1,4 @@
+
+# DO NOT DELETE
+./imgen_C.so: /Users/emanuelezanusso/Scratch/root/obj/include/RVersion.h /Users/emanuelezanusso/Scratch/root/obj/include/ROOT/RConfig.hxx /Users/emanuelezanusso/Scratch/root/obj/include/TClass.h /Users/emanuelezanusso/Scratch/root/obj/include/TDictAttributeMap.h /Users/emanuelezanusso/Scratch/root/obj/include/TInterpreter.h /Users/emanuelezanusso/Scratch/root/obj/include/TROOT.h /Users/emanuelezanusso/Scratch/root/obj/include/TBuffer.h /Users/emanuelezanusso/Scratch/root/obj/include/TMemberInspector.h /Users/emanuelezanusso/Scratch/root/obj/include/TError.h /Users/emanuelezanusso/Scratch/root/obj/include/RtypesImp.h /Users/emanuelezanusso/Scratch/root/obj/include/TIsAProxy.h /Users/emanuelezanusso/Scratch/root/obj/include/TFileMergeInfo.h /Users/emanuelezanusso/Scratch/root/obj/include/TCollectionProxyInfo.h /Users/emanuelezanusso/Scratch/root/obj/bin/rootcling
+imgen_C__ROOTBUILDVERSION= 6.32.06
